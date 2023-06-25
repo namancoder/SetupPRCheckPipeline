@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run Tests
         run: |
-          cd Week-2-Assignments-main/Week-2-Assignments-main
+          cd Week-2-Assignments-main/Week-2-Assignments-main/02-nodejs
           npm install 
           npm install jest express
           npx jest
