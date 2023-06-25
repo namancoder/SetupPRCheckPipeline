@@ -31,84 +31,77 @@
 
   const express = require("express")
   const PORT = 3000;
-  const bodyParser = require('body-parser');
-  const jwt = require("jsonwebtoken");
-  
   const app = express();
-  
-  app.use(bodyParser.json());
-  
+  // write your logic here, DONT WRITE app.listen(3000) when you're running tests, the tests will automatically start the server
   
   var users = [];
   
+  app.use(express.json());
   app.post("/signup", (req, res) => {
-    var newUser = req.body;
-    for (const user of users) {
-      if (user.email === newUser.email) {
-        res.status(400).send("User already exists!!!");
+    var user = req.body;
+    let userAlreadyExists = false;
+    for (var i = 0; i<users.length; i++) {
+      if (users[i].email === user.email) {
+          userAlreadyExists = true;
+          break;
       }
     }
-    const id = Math.floor(Math.random() * 100000);
-    newUser.id = id;
-    users.push(newUser);
-    res.status(201).send("Signed up successgully!!!");
+    if (userAlreadyExists) {
+      res.sendStatus(400);
+    } else {
+      users.push(user);
+      res.status(201).send("Signup successful");
+    }
   });
   
   app.post("/login", (req, res) => {
-    const {userName, password} = req.body;
-  
-    for(const user of users){
-      if(user.userName === userName){
-        if(user.password === password){
-          const token = jwt.sign({userName}, "qwertyuiop098765");
-          res.send({token: token});
-        }
-        else{
-          res.status(401).send("password incorrect");
-        }
-      }
-      else{
-        res.status(401).send("User not found");
+    var user = req.body;
+    let userFound = null;
+    for (var i = 0; i<users.length; i++) {
+      if (users[i].email === user.email && users[i].password === user.password) {
+          userFound = users[i];
+          break;
       }
     }
-  })
+  
+    if (userFound) {
+      res.json({
+          firstName: userFound.firstName,
+          lastName: userFound.lastName,
+          email: userFound.email
+      });
+    } else {
+      res.sendStatus(401);
+    }
+  });
   
   app.get("/data", (req, res) => {
-    const token = req.headers.authorization;
-  
-    if(token){
-      try{
-        const decodedToken = jwt.verify(token, 'qwertyuiop098765');
-        console.log(decodedToken);
-        var data = [];
-        for(const user of users){
-          var obj = {
-            id: user.id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-          }
-          data.push(obj);
-        }
-        res.send(data);
-      }
-      catch(err){
-        res.status(401).send("Invalid token!!!");
+    var email = req.headers.email;
+    var password = req.headers.password;
+    let userFound = false;
+    for (var i = 0; i<users.length; i++) {
+      if (users[i].email === email && users[i].password === password) {
+          userFound = true;
+          break;
       }
     }
-    else{
-      res.status(401).send("Missing token!!");
+  
+    if (userFound) {
+      let usersToReturn = [];
+      for (let i = 0; i<users.length; i++) {
+          usersToReturn.push({
+              firstName: users[i].firstName,
+              lastName: users[i].lastName,
+              email: users[i].email
+          });
+      }
+      res.json({
+          users
+      });
+    } else {
+      res.sendStatus(401);
     }
-  
-  })
-  
-  app.get("/users", (req, res) => {
-    res.send(users);
-  })
-  
-  
-  // app.listen(3000, () => {
-  //   console.log("Port is started on 3000");
-  // })
+  });
   
   module.exports = app;
   

@@ -21,14 +21,12 @@
     const path = require('path');
     const app = express();
     
-    
-    app.get("/files", function (req, res) {
-      const fileDir = path.join(__dirname, './files/');
-      fs.readdir(fileDir, function (err, files) {
+    app.get('/files', (req, res) => {
+      fs.readdir(path.join(__dirname, './files/'), (err, files) => {
         if (err) {
-          return res.status(500).send("Internal Server error.");
+          return res.status(500).json({ error: 'Failed to retrieve files' });
         }
-        res.send(files);
+        res.json(files);
       });
     });
     
@@ -43,13 +41,9 @@
       });
     });
     
+    app.all('*', (req, res) => {
+      res.status(404).send('Route not found');
+    });
     
-    app.use((req,res,nex) => {
-      res.status(404).send("route not found!!!");
-    })
-    
-    // app.listen(3000, () => {
-    //   console.log("Port is running on 3000");
-    // });
     module.exports = app;
     
