@@ -1,0 +1,27 @@
+name: Run Jest tests in week1 folder
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          cd week-3
+          cd 01-reconciler
+          npm install
+
+      - name: Run tests
+        run: |
+          cd week-3/01-reconciler
+          for folder in *; do
+            if [ -f "$folder/.test.js" ]; then
+              echo "Running tests in $folder"
+              node $folder/.test.js
+            fi
+          done
