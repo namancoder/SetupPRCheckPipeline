@@ -12,14 +12,22 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd week-2
-          npm install jest uuid express
-          for dir in */; do                                                                                            
-          (cd "$dir" && npm i && npm i jest express)
-          done
-      - name: Run tests
-        run: |
-          cd week-2
+          cd week-3/01-reconciler
+          npm install 
+          cd ..
+          cd 02-course-app-easy
+          npm install 
+          cd ..
+          cd 02-course-app-easy-2
+          npm install 
+          cd ..
+          cd 03-course-app-medium
+          npm install
+          cd ..
+          cd 04-course-app-hard
+          npm install 
+          cd ..
+          npm install jest 
           npx jest
                
 #       - name: Run tests
