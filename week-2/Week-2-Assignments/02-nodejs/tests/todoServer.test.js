@@ -68,7 +68,7 @@ describe("Todo API", () => {
         expect(Array.isArray(todos)).toBe(true);
         expect(todos.length).toBe(1);
         expect(todos[0].title).toBe(todo.title);
-        expect(todos[0].description).toBe(todo.description + "");
+        expect(todos[0].description).toBe(todo.description + "feweewew");
         done();
       });
     });
