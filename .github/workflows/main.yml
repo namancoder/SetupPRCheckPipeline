@@ -12,21 +12,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd week-3/01-reconciler
+          cd week-2/Week-2-Assignments/02-nodejs
           npm install 
-          cd ..
-          cd 02-course-app-easy
-          npm install 
-          cd ..
-          cd 02-course-app-easy-2
-          npm install 
-          cd ..
-          cd 03-course-app-medium
-          npm install
-          cd ..
-          cd 04-course-app-hard
-          npm install 
-          cd ..
           npm install jest 
           npx jest
                
