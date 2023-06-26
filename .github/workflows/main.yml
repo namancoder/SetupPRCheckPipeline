@@ -12,14 +12,24 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd week-3
-          cd 01-reconciler
-          npm install
-          npm install jest express 
+          cd week-3/01-reconciler
+          npm install && npm install jest express 
+          cd ..
+          cd 02-course-app-easy
+          npm install && npm install jest express
+          cd ..
+          cd 02-course-app-easy-2
+          npm install && npm install jest express
+          cd ..
+          cd 03-course-app-medium
+          npm install && npm install jest express
+          cd ..
+          cd 04-course-app-hard
+          npm install && npm install jest express
+          
 
       - name: Run tests
         run: |
-          cd week-3
-          cd 01-reconciler
+          cd week-3/
           npx jest
 
