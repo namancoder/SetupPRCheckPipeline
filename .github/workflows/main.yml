@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd week-2
-          npm install jest
+          npm install jest express uuid
           
 
       - name: Run tests
