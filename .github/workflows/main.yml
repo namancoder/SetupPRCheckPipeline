@@ -20,5 +20,6 @@ jobs:
       - name: Run tests
         run: |
           cd week-3
+          cd 01-reconciler
           npx jest
 
