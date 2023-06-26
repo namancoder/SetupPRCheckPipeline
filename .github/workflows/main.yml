@@ -26,11 +26,13 @@ jobs:
           cd ..
           cd 04-course-app-hard
           npm install && npm install jest express
+          cd ..
+          npm install jest
           
 
       - name: Run tests
         run: |
           cd week-3
-          npx jest --testPathPattern='src/**/*.[jt]s?(x)'
+          npx jest
 
 
