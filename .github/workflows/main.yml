@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd week-2
-          npm install jest
+          npm install jest uuid express
           for dir in */; do                                                                                            
           (cd "$dir" && npm i && npm i jest express)
           done
