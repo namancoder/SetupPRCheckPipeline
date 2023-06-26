@@ -1,30 +1,26 @@
-name: Run Jest
+name: Run Jest tests in week1 folder
 
 on:
   pull_request:
   workflow_dispatch:
 
 jobs:
-  Week3:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Install dependencies
         run: |
-          cd week-2
-          npm install jest
-          for dir in */; do                                                                                            
-          (cd "$dir" && npm i && npm i jest && npx jest)
+          cd week-3
+          cd 01-reconciler
+          npm install
+      - name: Run tests
+        run: |
+          cd week-3/01-reconciler
+          for folder in *; do
+            if [ -f "$folder/.test.js" ]; then
+              echo "Running tests in $folder"
+              npx jest
+            fi
           done
-          
-                  
-
-#       - name: Run tests
-#         run: |
-#           cd week-2
-#           for dir in */; do                                                                                            
-#           (cd "$dir" && npx jest)
-#           done
-
-
