@@ -26,9 +26,7 @@ jobs:
           cd ..
           cd 04-course-app-hard
           npm install 
-          cd ..
-          npm install jest 
-          npx jest
+     
                
       - name: Run tests
         run: |
