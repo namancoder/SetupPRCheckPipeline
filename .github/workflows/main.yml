@@ -30,6 +30,7 @@ jobs:
 
       - name: Run tests
         run: |
-          cd week-3/
-          npx jest
+          cd week-3
+          npx jest --testPathPattern='src/**/*.[jt]s?(x)'
+
 
