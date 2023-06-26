@@ -12,6 +12,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd week-3
           npm install
           npx jest
 #       - name: Run tests
