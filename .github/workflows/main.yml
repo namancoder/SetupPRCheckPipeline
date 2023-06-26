@@ -12,12 +12,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd week-2/Week-2-Assignments/02-nodejs
+          cd week-3
+          cd 01-reconciler
           npm install
-          npm install jest express
+          npm install jest express 
 
       - name: Run tests
         run: |
-          cd week-2/Week-2-Assignments/02-nodejs
+          cd week-3
           npx jest
 
