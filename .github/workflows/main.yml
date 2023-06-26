@@ -23,6 +23,8 @@ jobs:
       - name: Run tests
         run: |
           cd week-2
-          npx jest
+          for dir in */; do                                                                                            
+          (cd "$dir" && npx jest)
+          done
 
 
