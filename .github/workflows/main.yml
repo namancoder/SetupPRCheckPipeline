@@ -1,4 +1,4 @@
-name: Run Jest tests in week1 folder
+name: Run Jest
 
 on:
   pull_request:
@@ -12,16 +12,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd week-3
-          cd 01-reconciler
+          cd week-2/Week-2-Assignments/02-nodejs
           npm install
+          npm install jest express
 
       - name: Run tests
         run: |
-          cd week-3/01-reconciler
-          for folder in *; do
-            if [ -f "$folder/.test.js" ]; then
-              echo "Running tests in $folder"
-              node $folder/.test.js
-            fi
-          done
+          cd week-2/Week-2-Assignments/02-nodejs
+          npx jest
+
