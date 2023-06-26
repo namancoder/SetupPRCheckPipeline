@@ -13,11 +13,11 @@ jobs:
       - name: Install dependencies
         run: |
           cd week-3
-          npm install --prefix=. @01-reconciler/package.json
-          npm install --prefix=. @02-course-app-easy/package.json
-          npm install --prefix=. @02-course-app-easy-2/package.json
-          npm install --prefix=. @03-course-app-medium/package.json
-          npm install --prefix=. @04-course-app-hard/package.json
+          npm install --prefix=week-3 @01-reconciler/package.json
+          npm install --prefix=week-3 @02-course-app-easy/package.json
+          npm install --prefix=week-3 @02-course-app-easy-2/package.json
+          npm install --prefix=week-3 @03-course-app-medium/package.json
+          npm install --prefix=week-3 @04-course-app-hard/package.json
           npm install jest
           
           
