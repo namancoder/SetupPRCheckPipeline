@@ -15,16 +15,16 @@ jobs:
           cd week-2
           npm install jest
           for dir in */; do                                                                                            
-          (cd "$dir" && npm i)
+          (cd "$dir" && npm i && npx jest)
           done
           
                   
 
-      - name: Run tests
-        run: |
-          cd week-2
-          for dir in */; do                                                                                            
-          (cd "$dir" && npx jest)
-          done
+#       - name: Run tests
+#         run: |
+#           cd week-2
+#           for dir in */; do                                                                                            
+#           (cd "$dir" && npx jest)
+#           done
 
 
