@@ -15,7 +15,7 @@ jobs:
           cd week-2
           npm install jest
           for dir in */; do                                                                                            
-          (cd "$dir" && npm i && npx jest)
+          (cd "$dir" && npm i && npm i jest && npx jest)
           done
           
                   
