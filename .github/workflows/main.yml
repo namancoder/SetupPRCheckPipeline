@@ -12,7 +12,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd week-3
+          cd week-2
           npm install jest
           for dir in */; do                                                                                            
           (cd "$dir" && npm i)
@@ -22,7 +22,7 @@ jobs:
 
       - name: Run tests
         run: |
-          cd week-3
+          cd week-2
           npx jest
 
 
