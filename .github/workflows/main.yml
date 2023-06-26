@@ -12,15 +12,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd week-3
-          cd 01-reconciler
           npm install
-      - name: Run tests
-        run: |
-          cd week-3/01-reconciler
-          for folder in *; do
-            if [ -f "$folder/.test.js" ]; then
-              echo "Running tests in $folder"
-              npx jest
-            fi
-          done
+          npx jest
+#       - name: Run tests
+#         run: |
+#           cd week-3/01-reconciler
+#           for folder in *; do
+#             if [ -f "$folder/.test.js" ]; then
+#               echo "Running tests in $folder"
+#               npx jest
+#             fi
+#           done
